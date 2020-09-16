@@ -6,8 +6,8 @@ import (
 
 type $NAME$ struct {
 	Id        int64   `gorm:"primary_key,column:id" json:"id"`
-	CreatedAt int64 `gorm:"column:created_at" json:"created_at"`
-	UpdatedAt int64 `gorm:"column:updated_at" json:"updated_at"`
+	CreatedAt int64   `gorm:"column:created_at" json:"created_at"`
+	UpdatedAt int64   `gorm:"column:updated_at" json:"updated_at"`
 }
 
 
@@ -27,9 +27,8 @@ func (c *$NAME$) Create() (id int64, err error) {
 }
 
 // DeleteById is a function to delete a single record from table
-func (c *$NAME$) DeleteById(id int64) (rowsAffected int64, err error) {
-	db := gdb.GetDB().Table(c.TableName()).Delete($NAME$Default, "id = ?", id)
-	return db.RowsAffected, db.Error
+func (c *$NAME$) DeleteById(id int64) error {
+	return gdb.GetDB().Table(c.TableName()).Delete($NAME${}, "id = ?", id).Error
 }
 
 // Update is a function to update record with specific field with data map to table
