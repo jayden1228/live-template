@@ -1,4 +1,4 @@
-package model
+package  $MODELNAME$
 
 import (
 	gdb "gitlab.com/makeblock-go/mysql"
