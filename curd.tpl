@@ -13,7 +13,7 @@ type $NAME$ struct {
 
 var $NAME$Default $NAME$
 
-func ($NAME$) TableName() string {
+func (c *$NAME$) TableName() string {
 	return "$TableName$"
 }
 
