@@ -32,7 +32,7 @@ func (c *$NAME$) DeleteById(id int64) error {
 }
 
 // Update is a function to update record with specific field with data map to table
-func (c *$NAME$) Update(id int, data map[string]interface{}) (rowsAffected int64, err error) {
+func (c *$NAME$) Update(id int64, data map[string]interface{}) (rowsAffected int64, err error) {
 	db := gdb.GetDB().Table(c.TableName()).Where("id = ?", id).Update(data)
 	return db.RowsAffected, db.Error
 }
@@ -58,7 +58,7 @@ func (c *$NAME$) GetById(id int64) (*$NAME$, error) {
 // params - page     - page requested (defaults to 0)
 // params - pageSize - number of records in a page  (defaults to 20)
 // params - order    - db sort order column
-func (c *$NAME$) GetList(page, pageSize int64, order string) (results []*$NAME$, totalRows int, err error) {
+func (c *$NAME$) GetList(page, pageSize int, order string) (results []*$NAME$, totalRows int, err error) {
 
 	resultOrm := gdb.GetDB().Model(&$NAME${})
 	resultOrm.Count(&totalRows)
